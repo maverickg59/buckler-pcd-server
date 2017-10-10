@@ -6,7 +6,10 @@ module.exports = {
   },
 
   getOne(given) {
-    return knex('new_similars').where('given', given).andWhere('jaccard', '>', 0)
-    .orderBy('jaccard', 'asc').limit(10)
+    return knex('new_similars')
+      .where('given', given)
+      .andWhere('jaccard', '>=', 0)
+      .orderBy('jaccard', 'asc')
+      .limit(10)
   }
 }
